@@ -56,6 +56,7 @@
 
     <body>
         
+        
         <p class ="Title">TIC TAC TOE</p>
         
        <div class = "player-number">
@@ -65,15 +66,18 @@
        </div>
 
         <div class = "board">
-            <div class = "division"> X </div>
-            <div class = "division"> O </div>
-            <div class = "division"> O </div> 
-            <div class = "division"> X </div>
-            <div class = "division"> O </div>
-            <div class = "division"> X </div>
-            <div class = "division"> O </div>
-            <div class = "division"> X </div>
-            <div class = "division"> X </div>
+            <div class = "division" onclick = "
+                myfunc()"> <p class="A1"></p> </div>
+            <div class = "division" onclick = "myfunc1()">
+                <p class="A2"></p>   </div>
+            <div class = "division" onclick = "myfunc2()">
+                <p class="A3"></p>   </div> 
+            <div class = "division" onclick = "myfunc()">  </div>
+            <div class = "division" onclick = "myfunc()">  </div>
+            <div class = "division" onclick = "myfunc()">  </div>
+            <div class = "division" onclick = "myfunc()">  </div>
+            <div class = "division" onclick = "myfunc()">  </div>
+            <div class = "division" onclick = "myfunc()">  </div>
         </div>
 
         <div class = "score-div">            
@@ -81,5 +85,31 @@
                 <p>Loose: </p>
                 <p>Draw: </p>        
         </div>
+
+        <script>
+            let counter = 0;
+
+            function myfunc(){
+                var a1 = document.getElementsByClassName("A1")[0]
+                counter ++;
+                if ((counter % 2) === 0){
+                    a1.textContent = "X"
+                }
+                else{ 
+                    a1.textContent = "O"
+                }
+            }
+
+            function myfunc1(){
+                var a2 = document.getElementsByClassName("A2")[1]
+                counter ++;
+                if ((counter % 2) === 0){
+                    a2.textContent = "X"
+                }
+                else{ 
+                    a2.textContent = "O"
+                }
+            }
+        </script>
     </body>
 </html>
