@@ -2,80 +2,11 @@
 <html>
     <head>
         <title>TIC-TAC-TOE</title>
-        <style>
-            body{
-                font-family: Arial, Helvetica, sans-serif;
-                text-align: center;
-            }
-            .Title{
-                font-size: 30px;
-                font-weight: 700;
-            }
-
-            .score-div{
-                display:flex;
-                justify-content: center;
-                font-size: 20px;
-                margin-bottom: 15px;
-            }
-
-
-            .player-number{
-                width: 700px;
-                display:flex;
-                margin:auto;
-                justify-content: center;
-                font-size: 20px;
-                padding-bottom: 10px;
-            }
-
-
-            .p2, .p1 {
-                border-bottom: 2px solid rgb(181, 176, 176);
-                flex:1;
-                cursor: pointer;
-            }
-           
-            .p1:hover, .p2:hover{
-                border-bottom: 3px solid rgb(181, 176, 176);
-            }
-
-            .board{
-                display: grid;
-                margin: auto;
-                height: 300px;
-                width: 300px;
-                grid-template-columns: repeat(3,1fr);
-                grid-template-rows: repeat(3,1fr);
-                grid-gap: 0;
-            }
-
-            .division:hover{
-                background-color: #eee;
-            }
-
-            .division{
-                display: flex;
-                font-size: 40px;
-                font-weight: 700;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-            }
-
-            .division:not(:nth-child(3n)){
-                border-right: 3px solid black;
-            } /*says the one which is divisible by 3 will not have right border in the grid which is 3, 6 & 9  */ 
-
-            .division:not(:nth-last-child(-n + 3)){
-                border-bottom: 3px solid black;
-            }
-            
-        </style>
+        <link rel ="stylesheet" href="tic-tac.css">       
     </head>
 
     <body>
-        
+            
         
         <p class ="Title">TIC TAC TOE</p>
         
@@ -98,73 +29,12 @@
         </div>
 
         <div class = "score-div">            
-                <p>Wins: </p>
-                <p>Loose: </p>
-                <p>Draw: </p>        
+                <p class ="win">Wins: </p>
+                <p class ="loose">Loose: </p>
+                <p class ="draw">Draw: </p>        
         </div>
 
-        <script>
-
-            class Game
-            {
-                constructor() {
-                    console.log("init game") 
-                    this.turn = "X";
-                    this.board = new Array(9).fill(null); //making an arry to cover all the index in the board
-                }
-
-                nextTurn(){
-                    if (this.turn == "X"){
-                        this.turn ="O";
-                    }
-                    else{
-                        this.turn = "X";
-                    }
-                }
-                            
-                makeMove(i){
-                   if (this.board[i] == null){ 
-                    this.board[i] = this.turn;
-                   }
-                   else{return;}
-                }
-
-            }
-
-            class GameView 
-            {
-                constructor() {
-                    console.log("init GameView");
-                }
-
-                updateBoard(game) {
-                    for(let i = 0  ; i < 9 ; i++){ 
-                      const tile = document.querySelector(`.division[data-index = '${i}']`)  
-                      tile.textContent = game.board[i];
-
-                    }
-                }
-
-            }      
-
-            let game = new Game; 
-            let gameview = new GameView;
-
-            
-
-            let block = document.querySelectorAll(".division")
-            block.forEach((block) =>  {
-                    block.addEventListener("click", () => {
-                        onTileClicked(block.dataset.index);     
-                    })
-            } )
-                       
-            function onTileClicked(i){
-                game.makeMove(i);
-                gameview.updateBoard(game);
-                game.nextTurn();
-            }
+        <script src="tic-tac.js"></script> 
            
-        </script>
     </body>
 </html>
